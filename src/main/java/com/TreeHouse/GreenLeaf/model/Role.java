@@ -12,7 +12,9 @@ import javax.persistence.*;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer id;
 
+        // vet ej vad konverterar från string till enum mellan databas och klass
         @Enumerated(EnumType.STRING)
+        // google
         @Column(length = 20)
         private ERole name;
 

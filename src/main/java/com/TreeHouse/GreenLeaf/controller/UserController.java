@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 //för connection till react
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:8081")
 public class UserController {
 
     @Autowired

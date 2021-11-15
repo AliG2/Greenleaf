@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+// hämtar och hanterar data från databas
+@Repository
 public interface RoleRepository extends JpaRepository<Role,Long> {
-
+    // egen metod för att hämta efter role namn
     Optional<Role> findByName(ERole name);
 }

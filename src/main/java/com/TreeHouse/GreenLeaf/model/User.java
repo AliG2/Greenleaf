@@ -28,6 +28,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // @NotBlank måsta vara ifrån @UniqueConstraints
     @NotBlank
     @Size(max = 20)
     private String username;
@@ -41,21 +42,27 @@ public class User {
     @Size(max = 120)
     private String password;
 
+    // visar vilken relation det här bordet har
     @ManyToMany(fetch = FetchType.LAZY)
+    // skapar ett bridge table och lägger in user_id (user table) och role_id(role table)
     @JoinTable(	name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
+    // skapar en lista roller eller eller för tabbellen user_roles?
     private Set<Role> roles = new HashSet<>();
 
+    // tom construktor för entity
     public User() {
     }
 
+    // construktor
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
     }
 
+    // getters och setter   (gick tydligen inte med Lombok annoteringar)
     public Long getId() {
         return id;
     }
